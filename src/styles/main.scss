@@ -1,0 +1,15 @@
+// Imports in main.scss
+
+@use "./reset.scss";
+@use "./home.scss";
+@use "./navbar.scss";
+@use "./gallery.scss";
+@use "./glightbox-custom.scss";
+@use "logo";
+@use "menu-bar";
+@use "navigation";
+@use "menu";
+
+.no-scroll {
+  overflow: hidden;
+}

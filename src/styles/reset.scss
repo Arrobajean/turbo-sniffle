@@ -1,0 +1,69 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh; /* Cambiado a 100vh para mayor compatibilidad */
+  width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  font-family: "Roboto", sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word; /* Ajustado de text-wrap */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+// Base Anidación (ajustada para accesibilidad)
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  &:hover,
+  &:focus {
+    outline: none; /* Considera agregar algo más para accesibilidad */
+  }
+}
+
+input,
+textarea {
+  border: none;
+  outline: none;
+
+  &:focus {
+    outline: none; /* Considera agregar algo más para accesibilidad */
+  }
+}

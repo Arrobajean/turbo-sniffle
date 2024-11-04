@@ -1,0 +1,94 @@
+// Importa los estilos de GLightbox base
+@import "~glightbox/dist/css/glightbox.css";
+
+// Personalización de GLightbox
+.glightbox-container {
+  // Asegura que ocupe toda la pantalla en dispositivos móviles
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  // Ocultar controles de galería en pantallas más pequeñas
+  @media (max-width: 768px) {
+    .gslide-controls,
+    .gslide-description {
+      display: none;
+    }
+  }
+
+  // Ajuste de imagen para mejor visualización
+  img.gslide-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Asegura que los botones de navegación estén visibles en dispositivos móviles
+.glightbox-nav {
+  .gprev,
+  .gnext {
+    display: block !important; // Forza la visibilidad
+    opacity: 1; // Asegura que estén visibles
+    font-size: 2rem; // Aumenta el tamaño para pantallas móviles
+    padding: 0.75rem; // Agranda el área de toque
+    background: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); // Añade un fondo semi-transparente para mejorar la visibilidad
+    border-radius: 50%; // Hace que el botón tenga forma circular
+    color: #ffffff;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.7); // Cambia el fondo al hacer hover
+    }
+  }
+
+  // Ajuste específico para pantallas más pequeñas
+  @media (max-width: 768px) {
+    .gprev,
+    .gnext {
+      font-size: 2.5rem; // Aumenta un poco el tamaño en móviles
+      padding: 1rem;
+    }
+  }
+}
+
+.glightbox-container {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); // Fondo semitransparente para el efecto de vidrio
+  backdrop-filter: blur(15px); // Aplicación de desenfoque
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.glightbox-slide img {
+  border-radius: 8px; // Redondeo de bordes de la imagen
+}
+
+// Estilos para los botones de navegación
+.glightbox-nav {
+  .gnext,
+  .gprev {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    &:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
