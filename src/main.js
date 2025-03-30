@@ -5,14 +5,16 @@ import { initCursor } from "./utils/cursor";
 import { initSliderEffect } from "./utils/slider";
 import { toggleMenu } from "./utils/menu";
 import { setLogo } from "./utils/logo";
-import { headerVisibilityToggle } from "./utils/headerVisibilityToggle";
+import { toggleHeaderOnScroll } from "./utils/headerVisibilityToggle";
 
+import { setViewportHeight } from "./utils/setViewportHeight"; // Importa la función
 
 document.addEventListener("DOMContentLoaded", () => {
-  initRouter(); // Inicializa el enrutador
-  loadBackgroundImages(); // Carga las imágenes de fondo
-  initCursor(); // Inicia el efecto del cursor
-  initSliderEffect(); // Inicia el efecto del slider
-  setLogo(); // Configura el logo
-  headerVisibilityToggle(); // Llama a la función para el efecto de visibilidad del header
+  setViewportHeight(); // Ejecuta la función para ajustar el viewport
+  initRouter();
+  loadBackgroundImages();
+  initCursor();
+  initSliderEffect();
+  setLogo();
+  toggleHeaderOnScroll();
 });

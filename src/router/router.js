@@ -1,4 +1,4 @@
-// src/router/router.js
+import { gsap } from "gsap";
 import homeView from "../views/home";
 import aboutView from "../views/about";
 import galleryView from "../views/gallery";
@@ -8,8 +8,10 @@ import {
   loadBackgroundImages,
 } from "../utils/backgroundLoader";
 import { resetCursor, initCursor } from "../utils/cursor";
-import { initSliderEffect } from "../utils/slider"; // Importa la función de efecto del slider
+import { initSliderEffect } from "../utils/slider";
+import { closeMenuOnNavigation } from "../utils/menu";
 
+// Definición de rutas
 const routes = {
   "#home": homeView,
   "#about": aboutView,
@@ -17,45 +19,65 @@ const routes = {
   "#contact": contactView,
 };
 
-async function loadView() {
-  const content = document.getElementById("views");
-  const [hash, queryString] = window.location.hash.split("?");
-  const urlParams = new URLSearchParams(queryString);
-  const filter = urlParams.get("filter");
+const content = document.getElementById("views");
 
-  // Reinicia los estados de carga de fondo y cursor al cambiar de vista
-  resetBackgroundLoad();
-  resetCursor();
+async function pageTransition(destPath) {
+  await gsap
+    .timeline()
+    .to(content, { duration: 0.5, opacity: 0 }) // Transición de salida
+    .add(async () => {
+      content.innerHTML = ""; // Limpia el contenido actual
 
-  content.innerHTML = "";
+      // Carga la nueva vista
+      const view = await routes[destPath]?.();
+      if (view) {
+        content.appendChild(view);
+      }
 
-  if (routes[hash]) {
-    try {
-      // Comprueba si la vista es una función asincrónica
-      const view = await routes[hash]();
-      content.appendChild(view);
-
-      // Ejecuta `loadBackgroundImages`, `initCursor`, y `initSliderEffect` después de cargar la vista home
-      if (hash === "#home") {
+      // Ejecuta funciones específicas solo para la vista de inicio
+      if (destPath === "#home") {
         loadBackgroundImages();
         initCursor();
         initSliderEffect();
       }
+    })
+    .to(content, { duration: 0.5, opacity: 1 }); // Transición de entrada
+}
 
-      if (hash === "#gallery" && filter) {
-        setTimeout(() => {
-          view.applyFilter && view.applyFilter(filter);
-        }, 0);
-      }
-    } catch (error) {
-      console.error(`Error al cargar la vista "${hash}":`, error);
+async function loadView() {
+  const [hash, queryString] = window.location.hash.split("?");
+  const urlParams = new URLSearchParams(queryString);
+  const filter = urlParams.get("filter");
+
+  // Actualiza el filtro en formato correcto para `Gallery.js`
+  const formattedFilter = filter ? `.${filter.replace(".", "")}` : "*";
+
+  // Resetear estados para cada vista
+  resetBackgroundLoad();
+  resetCursor();
+  closeMenuOnNavigation();
+
+  // Verifica si la ruta existe y ejecuta la transición
+  if (routes[hash]) {
+    await pageTransition(hash);
+    if (hash === "#gallery" && filter) {
+      setTimeout(() => {
+        const view = routes[hash];
+        view.applyFilter && view.applyFilter(formattedFilter);
+      }, 0);
     }
   } else {
     console.error(`Ruta "${hash}" no definida.`);
   }
 }
 
+// Inicializar el enrutador y cargar la vista inicial
 export function initRouter() {
   window.addEventListener("hashchange", loadView);
+
+  // Cargar la vista inicial (incluye función para rutas sin hash)
+  if (!window.location.hash) {
+    window.location.hash = "#home";
+  }
   loadView();
 }

@@ -9,7 +9,11 @@
 @use "menu-bar";
 @use "navigation";
 @use "menu";
+@use "./about.scss";
+@use "./contact.scss";
+@use "./variables" as vars;
 
 .no-scroll {
   overflow: hidden;
 }
+

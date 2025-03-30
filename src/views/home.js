@@ -22,42 +22,37 @@ export default function Home() {
         </li>
       </ul>
 
-      <!-- Slider Images -->
-      <ul class="slider-images">
-        <li>
-          <div class="dark-over-hero"></div>
-          <div class="img-hero-background">
-            <img data-src="showcase-mask" alt="Mask Showcase" />
-          </div>
-          <div class="hero-number">01</div>
-          <div class="slider-title">Los Diablos</div>
-        </li>
-        <li>
-          <div class="dark-over-hero"></div>
-          <div class="img-hero-background">
-            <img data-src="showcase-sculptures" alt="Sculptures Showcase" />
-          </div>
-          <div class="hero-number">02</div>
-          <div class="slider-title">Sculptures Showcase</div>
-        </li>
-        <li>
-          <div class="dark-over-hero"></div>
-          <div class="img-hero-background">
-            <img data-src="showcase-collage" alt="Collage Showcase" />
-          </div>
-          <div class="hero-number">03</div>
-          <div class="slider-title">Collage Showcase</div>
-        </li>
-        <li>
-          <div class="dark-over-hero"></div>
-          <div class="img-hero-background">
-            <img data-src="showcase-performance" alt="Performance Showcase" />
-          </div>
-          <div class="hero-number">04</div>
-          <div class="slider-title">El Cuerpo En Rojo</div>
-        </li>
-      </ul>
-    </section>
+   <!-- Slider Images -->
+<ul class="slider-images">
+  <li>
+    <div class="dark-over-hero"></div>
+    <div class="img-hero-background">
+      <img data-src="showcase-mask" alt="Máscara de Los Diablos en exhibición" />
+    </div>
+    <div class="slider-title">Los Diablos</div>
+  </li>
+  <li>
+    <div class="dark-over-hero"></div>
+    <div class="img-hero-background">
+      <img data-src="showcase-sculptures" alt="Jarrón inspirado en la Diabla de Mar" />
+    </div>
+    <div class="slider-title">Diabla de Mar</div>
+  </li>
+  <li>
+    <div class="dark-over-hero"></div>
+    <div class="img-hero-background">
+      <img data-src="showcase-collage" alt="Collage artístico titulado Cosmos Fragmentado" />
+    </div>
+    <div class="slider-title">Cosmos Fragmentado</div>
+  </li>
+  <li>
+    <div class="dark-over-hero"></div>
+    <div class="img-hero-background">
+      <img data-src="showcase-performance" alt="Performance artística El Cuerpo En Rojo" />
+    </div>
+    <div class="slider-title">El Cuerpo en Rojo</div>
+  </li>
+</ul>
   `;
 
   return homeContent;

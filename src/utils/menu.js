@@ -16,5 +16,19 @@ export function toggleMenu() {
   }
 }
 
-// Hacer que la función sea global
+// Función para cerrar el menú al navegar
+export function closeMenuOnNavigation() {
+  const menuIcon = document.querySelector(".ham");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (menuIcon && mobileMenu && mobileMenu.classList.contains("active")) {
+    // Cierra el menú si está activo
+    menuIcon.classList.remove("active");
+    mobileMenu.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+  }
+}
+
+// Hacer que las funciones sean globales si se necesita
 window.toggleMenu = toggleMenu;
+window.closeMenuOnNavigation = closeMenuOnNavigation;

@@ -18,20 +18,9 @@ function waitForElements(selector, callback) {
 }
 
 export function loadBackgroundImages() {
-  console.log("Ejecutando loadBackgroundImages");
-
   if (!isBackgroundLoaded) {
     waitForElements(".img-hero-background img", (imgHeroBackgrounds) => {
       const mobileQuery = window.matchMedia("(max-width: 767px)");
-
-      console.log("Imágenes importadas:", {
-        showcaseMask,
-        showcaseSculptures,
-        showcaseSculpturesMobile,
-        showcaseCollage,
-        showcasePerformance,
-        showcasePerformanceMobile,
-      });
 
       function updateImages(isMobile) {
         const images = {
@@ -47,13 +36,9 @@ export function loadBackgroundImages() {
 
         imgHeroBackgrounds.forEach((img) => {
           const imageName = img.getAttribute("data-src");
-          console.log(`Asignando imagen para ${imageName}`);
 
           if (images[imageName]) {
             img.src = images[imageName];
-            console.log(`Imagen asignada: ${img.src}`);
-          } else {
-            console.warn(`No se encontró una imagen para ${imageName}`);
           }
         });
       }
@@ -64,7 +49,6 @@ export function loadBackgroundImages() {
           const firstImage = imgHeroBackgrounds[0];
           firstImage.classList.add("active"); // Clase para mostrar la imagen por defecto
           firstImage.src = showcaseMask; // Asegura que showcaseMask esté visible por defecto
-          console.log("Imagen por defecto asignada a showcase-mask.");
         }
       }
 
@@ -81,6 +65,5 @@ export function loadBackgroundImages() {
 }
 
 export function resetBackgroundLoad() {
-  console.log("Reseteando isBackgroundLoaded a false");
   isBackgroundLoaded = false;
 }

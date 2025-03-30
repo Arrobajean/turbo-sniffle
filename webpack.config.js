@@ -1,16 +1,17 @@
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin"); // Agregado para GitHub Pages
 const path = require("path");
 
 module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
+    filename: "js/main.js",
     clean: true,
-    publicPath: "/ananda-portfolio-v3/",
+    publicPath: "", // Importante para GitHub Pages
   },
   module: {
     rules: [
@@ -26,17 +27,17 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"], // Usa MiniCssExtractPlugin
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // Usa MiniCssExtractPlugin
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpeg|jpg|gif|svg)$/i,
         type: "asset/resource",
         generator: {
-          filename: "images/[name][hash][ext]", // Mejora la gestión de imágenes
+          filename: "images/[name][hash][ext]",
         },
       },
     ],
@@ -44,32 +45,13 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({
       template: "./src/index.html",
-      publicPath: "/ananda-portfolio-v3/",
-    }),
-    // new FaviconsWebpackPlugin({
-    //   logo: "./src/assets/ui/favicon.ico",
-    //   cache: true,
-    //   inject: true,
-    //   favicons: {
-    //     appName: "Ananda de Sousa - Portfolio",
-    //     appDescription: "Portfolio de Ananda de Sousa",
-    //     developerName: "Ananda de Sousa",
-    //     developerURL: null,
-    //     background: "#fff",
-    //     theme_color: "#333",
-    //     icons: {
-    //       coast: false,
-    //       yandex: false,
-    //     },
-    //   },
-    // }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css", // Archivos CSS separados
-      chunkFilename: "[id].css",
+      filename: "css/[name].css",
+      chunkFilename: "css/[id].css",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "src/.nojekyll", to: "" }], // Evita problemas con Jekyll en GitHub Pages
     }),
   ],
   resolve: {
@@ -77,6 +59,10 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin()],
   },
   devServer: {
     static: {
@@ -86,6 +72,6 @@ module.exports = {
     port: 8081,
     historyApiFallback: true,
   },
-  mode: "development", // Cambia a 'production' para la versión final
-  devtool: "source-map", // Habilita el mapa de fuentes para facilitar la depuración
+  mode: "production", // Cambiado a producción para GitHub Pages
+  devtool: "source-map",
 };

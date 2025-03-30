@@ -3,15 +3,25 @@
 $redColor: rgba(244, 67, 54, 1);
 $blueColor: rgba(33, 150, 243, 1);
 
-$breakpoint-lg: 991px;
-$breakpoint-md: 767px;
+$breakpoint-lg: 62rem;
+$breakpoint-md: 48rem;
+$breakpoint-sm: 30rem;
+
+// Configuración inicial para desbordamiento y ajuste de pantallas
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .cursor,
 .cursor2,
 .cursor3 {
   position: fixed;
   border-radius: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
   left: -100px;
   top: 50%;
@@ -26,30 +36,27 @@ $breakpoint-md: 767px;
 
 .cursor2,
 .cursor3 {
-  height: 36px;
-  width: 36px;
+  height: 2.25rem;
+  width: 2.25rem;
   z-index: 99998;
   transition: all 0.3s ease-out;
 }
 
 .cursor2.hover,
 .cursor3.hover {
-  transform: scale(2) translateX(-25%) translateY(-25%);
+  transform: scale(2) translate(-25%, -25%);
   border: none;
 }
 
 .cursor2 {
-  border: 2px solid #fff;
-  box-shadow: 0 0 22px rgba(255, 255, 255, 0.6);
+  border: 0.125rem solid #fff;
+  box-shadow: 0 0 1.375rem rgba(255, 255, 255, 0.6);
 }
 
 .cursor2.hover {
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0.75rem rgba(255, 255, 255, 0.2);
 }
-
-/* #Slider
-================================================== */
 
 .section {
   position: relative;
@@ -60,17 +67,11 @@ $breakpoint-md: 767px;
   background-color: #212121;
 }
 
-/* SHOWCASE HOME
-================================================== */
-
 .slider-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 10;
-  width: auto;
-  margin: 0;
-  padding: 0;
   transform: translate(-50%, -50%);
   list-style: none;
 }
@@ -78,25 +79,18 @@ $breakpoint-md: 767px;
 .slider-wrapper .slider-name a {
   position: relative;
   list-style: none;
-  margin: 0;
   display: block;
   text-align: center;
-  padding: 0;
-  font-size: 28px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  font-size: 1.75rem;
+  margin: 1.5rem 0;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   line-height: 1.3;
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
   color: #8e8d9a;
   opacity: 0.5;
   text-decoration: none;
   transition: all 300ms linear;
-}
-
-.slider-wrapper .slider-name a:hover {
-  text-decoration: none;
 }
 
 .slider-wrapper .slider-name.active a {
@@ -124,8 +118,8 @@ $breakpoint-md: 767px;
 
 .slider-images li .img-hero-background {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,24 +134,19 @@ $breakpoint-md: 767px;
   transition: opacity 0.5s ease-in-out;
 }
 
-.slider-images li.show .img-hero-background img {
-  opacity: 1;
-}
-
 .slider-images li .slider-title {
   position: absolute;
-  bottom: 30px;
-  left: 30px;
+  bottom: 2rem;
+  left: 2rem;
   display: block;
   opacity: 0;
   color: #fff;
   z-index: 19;
-  letter-spacing: 1px;
-  font-size: 14px;
+  letter-spacing: 0.0625rem;
+  font-size: 0.875rem;
   font-family: "Roboto", sans-serif;
-  writing-mode: vertical-lr;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 1.15;
   font-style: italic;
   transform: translateX(-100%);
   transition: all 300ms linear;
@@ -166,82 +155,6 @@ $breakpoint-md: 767px;
 .slider-images li.show .slider-title {
   opacity: 1;
   transform: translateX(0);
-}
-
-.slider-images li .hero-number-back {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  list-style: none;
-  opacity: 0;
-  font-size: 18vw;
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.12);
-  z-index: 1;
-  transition: all 300ms linear;
-}
-
-.slider-images li .hero-number {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  width: 40px;
-  margin-left: -70px;
-  display: block;
-  letter-spacing: 2px;
-  text-align: center;
-  list-style: none;
-  opacity: 0;
-  font-size: 13px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  line-height: 1;
-  color: #fff;
-  z-index: 6;
-  transform: translateY(100%);
-  transition: all 300ms linear;
-}
-
-.slider-images li .hero-number-fixed {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  margin-left: 30px;
-  width: 40px;
-  text-align: center;
-  display: block;
-  letter-spacing: 2px;
-  list-style: none;
-  font-size: 13px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  line-height: 1;
-  color: #fff;
-  z-index: 6;
-}
-
-.slider-images li .hero-number-fixed:before {
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: -60px;
-  width: 60px;
-  height: 1px;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.slider-images li.show .hero-number {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.slider-images li.show .hero-number-back {
-  opacity: 1;
 }
 
 .dark-over-hero {
@@ -257,46 +170,56 @@ $breakpoint-md: 767px;
 
 .developer-logo {
   position: fixed;
-  top: 1200px;
-  right: 30px;
+  top: 75rem;
+  right: 1.875rem;
   z-index: 20;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   text-align: center;
-  border-radius: 3px;
-  background-position: center center;
+  border-radius: 0.1875rem;
+  background-position: center;
   background-size: cover;
   background-image: url("../assets/ui/dev-logo.ico");
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.3);
   transition: opacity 0.2s ease-out, border-radius 0.2s ease-out,
     box-shadow 0.2s ease-out;
-
-  @media (max-width: $breakpoint-md) {
-    top: auto;
-    bottom: 25px;
-    right: 25px;
-  }
 }
 
 .developer-logo:hover {
   opacity: 0.8;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0.9375rem rgba(255, 255, 255, 0.6);
 }
 
-@media (max-width: 991px) {
-  .slider-images li .hero-number-back {
-    font-size: 26vw;
-  }
-}
-
-@media (max-width: 767px) {
+@media (max-width: $breakpoint-md) {
   .slider-wrapper .slider-name a {
-    font-size: 25px;
-    letter-spacing: 1px;
+    font-size: 2rem;
   }
-  .slider-images li .hero-number-back {
-    font-size: 32vw;
+
+  .slider-images li .slider-title {
+    font-size: 1rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .developer-logo {
+    top: auto;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .slider-wrapper .slider-name a {
+    font-size: 1.8rem;
+  }
+
+  .slider-images li .slider-title {
+    font-size: 1rem;
+  }
+
+  .slider-images li .hero-number {
+    font-size: 0.625rem;
   }
 }

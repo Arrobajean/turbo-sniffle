@@ -1,0 +1,82 @@
+// Definir variable de altura del navbar
+$navbar-height: 100px;
+
+// Estilos para el body
+body {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+// Estilo específico para el texto resaltado
+.highlighted-text {
+  color: #d10c0e;
+}
+
+// Estilos específicos para la sección about
+.about {
+  margin: 2rem auto 5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+  .container-fluid {
+    max-width: 900px;
+    padding: 0 30px;
+    margin-top: $navbar-height;
+  }
+
+  .social-links {
+    margin: 3rem 0 4rem 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+
+    li {
+      display: inline-block;
+      margin: 0;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: color 0.3s ease, background 0.3s ease;
+
+        &:hover {
+          color: #d10c0e;
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+  }
+}
+
+// Media queries para ajustar el tamaño de los botones sociales en dispositivos más pequeños
+@media (max-width: 768px) {
+  .social-links li a {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links li a {
+    width: 40px;
+    height: 40px;
+  }
+}
