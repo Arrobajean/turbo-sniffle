@@ -1,17 +1,18 @@
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin"); // Agregado para GitHub Pages
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin"); // Nueva importación
+const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin; // Importación del CleanWebpackPlugin
 const path = require("path");
 
 module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "js/main.js",
-    clean: true,
-    publicPath: "", // Importante para GitHub Pages
+    filename: "main.js",
+    clean: true, // Elimina los archivos antiguos de la carpeta dist (opcional si usas el plugin)
+    publicPath: "/", // Cambia esto según sea necesario
   },
   module: {
     rules: [
@@ -27,17 +28,17 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"], // Usa MiniCssExtractPlugin
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // Usa MiniCssExtractPlugin
       },
       {
         test: /\.(png|jpeg|jpg|gif|svg)$/i,
         type: "asset/resource",
         generator: {
-          filename: "images/[name][hash][ext]",
+          filename: "images/[name][hash][ext]", // Mejora la gestión de imágenes
         },
       },
     ],
@@ -46,13 +47,32 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: "./src/index.html",
     }),
+    // new FaviconsWebpackPlugin({
+    //   logo: "./src/assets/ui/favicon.ico",
+    //   cache: true,
+    //   inject: true,
+    //   favicons: {
+    //     appName: "Ananda de Sousa - Portfolio",
+    //     appDescription: "Portfolio de Ananda de Sousa",
+    //     developerName: "Ananda de Sousa",
+    //     developerURL: null,
+    //     background: "#fff",
+    //     theme_color: "#333",
+    //     icons: {
+    //       coast: false,
+    //       yandex: false,
+    //     },
+    //   },
+    // }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+    }),
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
-      chunkFilename: "css/[id].css",
+      filename: "[name].css", // Archivos CSS separados
+      chunkFilename: "[id].css",
     }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: "src/.nojekyll", to: "" }], // Evita problemas con Jekyll en GitHub Pages
-    }),
+    new CleanWebpackPlugin(), // Limpia la carpeta dist antes de cada compilación
   ],
   resolve: {
     extensions: [".js", ".jsx", ".json"],
@@ -62,7 +82,9 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [
+      new CssMinimizerPlugin(), // Minimización de CSS
+    ],
   },
   devServer: {
     static: {
@@ -72,6 +94,6 @@ module.exports = {
     port: 8081,
     historyApiFallback: true,
   },
-  mode: "production", // Cambiado a producción para GitHub Pages
-  devtool: "source-map",
+  mode: "development", // Cambia a 'production' para la versión final
+  devtool: "source-map", // Habilita el mapa de fuentes para facilitar la depuración
 };
