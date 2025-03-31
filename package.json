@@ -1,11 +1,24 @@
 {
+  "name": "proyecto---portafolio-ananda3.0",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "description": "",
+  "homepage": "https://Arrobajean.github.io/turbo-sniffle",
+  "scripts": {
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d dist",
+    "start": "webpack serve --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "babel-loader": "^9.2.1",
+    "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
     "favicons-webpack-plugin": "^6.0.1",
+    "file-loader": "^6.2.0",
     "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.2",
@@ -31,17 +44,7 @@
     "masonry-layout": "^4.2.2",
     "scrollreveal": "^4.0.9"
   },
-  "name": "proyecto---portafolio-ananda3.0",
-  "version": "1.0.0",
-  "main": "webpack.config.js",
-  "scripts": {
-    "build": "webpack --mode production",
-    "deploy": "gh-pages -d dist",
-    "start": "webpack serve --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }

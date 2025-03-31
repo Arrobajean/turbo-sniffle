@@ -178,12 +178,15 @@ $breakpoint-sm: 30rem;
   height: 2.5rem;
   text-align: center;
   border-radius: 0.1875rem;
-  background-position: center;
-  background-size: cover;
-  background-image: url("../assets/ui/dev-logo.ico");
   box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.3);
-  transition: opacity 0.2s ease-out, border-radius 0.2s ease-out,
-    box-shadow 0.2s ease-out;
+  transition: opacity 0.2s ease-out, border-radius 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.developer-logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.1875rem;
+  object-fit: cover; /* Asegura que la imagen se ajuste al contenedor */
 }
 
 .developer-logo:hover {

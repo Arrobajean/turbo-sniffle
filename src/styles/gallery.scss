@@ -117,3 +117,29 @@ img {
     }
   }
 }
+
+.description-text {
+  text-align: center;
+  max-width: 900px; /* Reducido para evitar que toque los bordes */
+  margin: 0 auto;
+  padding: 20px; /* Añade separación en todos los lados */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.description-text h4,
+.description-text p {
+  text-align: center;
+  margin: 10px 0; /* Espaciado entre elementos */
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .description-text {
+    max-width: 90%; /* Reduce el ancho para adaptarse mejor */
+    padding: 15px; /* Menos padding en pantallas pequeñas */
+  }
+}

@@ -1,4 +1,5 @@
-// src/views/home.js
+import devLogo from "../assets/ui/dev-logo.png"; // Ajusta la ruta según la estructura de tu proyecto
+
 export default function Home() {
   const homeContent = document.createElement("div");
   homeContent.classList.add("home-content");
@@ -22,37 +23,44 @@ export default function Home() {
         </li>
       </ul>
 
-   <!-- Slider Images -->
-<ul class="slider-images">
-  <li>
-    <div class="dark-over-hero"></div>
-    <div class="img-hero-background">
-      <img data-src="showcase-mask" alt="Máscara de Los Diablos en exhibición" />
+      <!-- Slider Images -->
+      <ul class="slider-images">
+        <li>
+          <div class="dark-over-hero"></div>
+          <div class="img-hero-background">
+            <img data-src="showcase-mask" alt="Máscara de Los Diablos en exhibición" />
+          </div>
+          <div class="slider-title">Los Diablos</div>
+        </li>
+        <li>
+          <div class="dark-over-hero"></div>
+          <div class="img-hero-background">
+            <img data-src="showcase-sculptures" alt="Jarrón inspirado en la Diabla de Mar" />
+          </div>
+          <div class="slider-title">Diabla de Mar</div>
+        </li>
+        <li>
+          <div class="dark-over-hero"></div>
+          <div class="img-hero-background">
+            <img data-src="showcase-collage" alt="Collage artístico titulado Cosmos Fragmentado" />
+          </div>
+          <div class="slider-title">Cosmos Fragmentado</div>
+        </li>
+        <li>
+          <div class="dark-over-hero"></div>
+          <div class="img-hero-background">
+            <img data-src="showcase-performance" alt="Performance artística El Cuerpo En Rojo" />
+          </div>
+          <div class="slider-title">El Cuerpo en Rojo</div>
+        </li>
+      </ul>
+    </section>
+
+    <div class="developer-logo">
+      <a href="https://github.com/Arrobajean" target="_blank" rel="noopener noreferrer">
+        <img src="${devLogo}" alt="Ananda de Sousa Developer Logo" />
+      </a>
     </div>
-    <div class="slider-title">Los Diablos</div>
-  </li>
-  <li>
-    <div class="dark-over-hero"></div>
-    <div class="img-hero-background">
-      <img data-src="showcase-sculptures" alt="Jarrón inspirado en la Diabla de Mar" />
-    </div>
-    <div class="slider-title">Diabla de Mar</div>
-  </li>
-  <li>
-    <div class="dark-over-hero"></div>
-    <div class="img-hero-background">
-      <img data-src="showcase-collage" alt="Collage artístico titulado Cosmos Fragmentado" />
-    </div>
-    <div class="slider-title">Cosmos Fragmentado</div>
-  </li>
-  <li>
-    <div class="dark-over-hero"></div>
-    <div class="img-hero-background">
-      <img data-src="showcase-performance" alt="Performance artística El Cuerpo En Rojo" />
-    </div>
-    <div class="slider-title">El Cuerpo en Rojo</div>
-  </li>
-</ul>
   `;
 
   return homeContent;

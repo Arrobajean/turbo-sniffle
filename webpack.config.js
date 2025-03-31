@@ -9,9 +9,9 @@ module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "js/main.js",
+    filename: "main.js",
     clean: true,
-    publicPath: "", // Importante para GitHub Pages
+    publicPath: "/turbo-sniffle/", // Cambia esto al nombre de tu repositorio
   },
   module: {
     rules: [
