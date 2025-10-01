@@ -11,7 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
     clean: true,
-    publicPath: "/turbo-sniffle/", // Cambia esto al nombre de tu repositorio
+    publicPath: "./", // Rutas relativas para GitHub Pages
   },
   module: {
     rules: [
